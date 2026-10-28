@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zlatá dvacátá · Maturitní ples 4.A · 16. 1. 2027</title>
+<meta name="description" content="Maturitní ples třídy 4.A: program večera, rezervace míst u stolů, vstupenky, tombola, vzkazy pro maturanty a fotky. Ukázka od MadeByEmKo.">
+<meta property="og:title" content="Zlatá dvacátá · Maturitní ples 4.A">
+<meta property="og:description" content="16. 1. 2027 · Program, rezervace míst, tombola a fotky na jednom místě.">
+<meta property="og:image" content="https://madebyemko.github.io/ples/img/nahled.jpg">
+<meta property="og:url" content="https://madebyemko.github.io/ples/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d0c0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230d0c0a%22/%3E%3Cpath d=%22M32 8 56 32 32 56 8 32Z%22 fill=%22none%22 stroke=%22%23d9b46a%22 stroke-width=%223%22/%3E%3Ctext x=%2232%22 y=%2240%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2221%22 fill=%22%23d9b46a%22%3E4A%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Art deco noc: černá, šampaňské zlato, krémová. */
+:root{
+  color-scheme:dark;
+  --bg:#0d0c0a;
+  --bg2:#15130f;
+  --card:#1b1814;
+  --line:rgba(217,180,106,.22);
+  --ink:#f4ecdc;
+  --muted:#b5aa95;
+  --gold:#d9b46a;
+  --gold2:#f3dca4;
+  --gold3:#a8803c;
+  --ok:#8fd3a8;
+  --f-deco:"Cinzel",Georgia,serif;
+  --f-it:"Playfair Display",Georgia,serif;
+  --f-body:"Manrope","Segoe UI",system-ui,sans-serif;
+  --r:16px;
+  --grad:linear-gradient(100deg,var(--gold3) 0%,var(--gold2) 28%,var(--gold) 50%,#fff3d2 62%,var(--gold3) 100%);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.08;text-wrap:balance}
+p{margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+::selection{background:var(--gold);color:var(--bg)}
+.gold{background:var(--grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+
+/* pruh ukázky */
+.demo{background:var(--gold);color:#1a150c;font-size:13px;font-weight:600;text-align:center;padding:8px 18px;padding-top:calc(8px + env(safe-area-inset-top,0px))}
+.demo a{font-weight:800;white-space:nowrap}
+
+/* navigace */
+.nav{position:sticky;top:0;z-index:30;background:rgba(13,12,10,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-deco);font-weight:700;letter-spacing:.12em;font-size:15px;white-space:nowrap}
+.logo svg{width:30px;height:30px;flex:none}
+.links{margin-left:auto;display:flex;gap:2px}
+.links a{font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);padding:7px 12px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.links a:hover,.links a.on{color:var(--ink);background:rgba(217,180,106,.12)}
+.nav .cta{margin-left:6px}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;cursor:pointer;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--gold2);border-radius:2px;position:relative;transition:transform .3s,background .3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded=true] span::after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:25;background:rgba(13,12,10,.97);display:flex;flex-direction:column;justify-content:center;padding:90px 28px 40px;gap:4px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mnav.open{opacity:1;pointer-events:auto}
+.mnav a{font-family:var(--f-deco);font-size:clamp(24px,7vw,34px);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);transform:translateY(14px);opacity:0;transition:transform .45s,opacity .45s}
+.mnav.open a{transform:none;opacity:1}
+.mnav.open a:nth-child(2){transition-delay:.04s}.mnav.open a:nth-child(3){transition-delay:.08s}.mnav.open a:nth-child(4){transition-delay:.12s}.mnav.open a:nth-child(5){transition-delay:.16s}.mnav.open a:nth-child(6){transition-delay:.2s}.mnav.open a:nth-child(7){transition-delay:.24s}
+@media (max-width:900px){.links,.nav .cta{display:none}.burger{display:grid}}
+
+/* tlačítka */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:800;letter-spacing:.02em;padding:14px 24px;border-radius:999px;border:1px solid var(--gold);background:var(--grad);background-size:220% 100%;color:#1a150c;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .3s,background-position .8s;box-shadow:0 8px 30px -10px rgba(217,180,106,.6)}
+.btn:hover{transform:translateY(-2px);background-position:-60% 0;box-shadow:0 14px 40px -12px rgba(217,180,106,.8)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--gold2);box-shadow:none}
+.btn.ghost:hover{background:rgba(217,180,106,.1)}
+.btn.sm{padding:9px 16px;font-size:14px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* úvod */
+.hero{position:relative;min-height:min(92vh,860px);display:grid;align-items:center;overflow:hidden;isolation:isolate;text-align:center}
+.hero>img{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;object-position:50% 40%;z-index:-3;will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 35%,rgba(13,12,10,.35),rgba(13,12,10,.82) 70%),linear-gradient(180deg,rgba(13,12,10,.4),rgba(13,12,10,.15) 40%,var(--bg) 98%)}
+.deco{position:absolute;inset:18px;z-index:-1;pointer-events:none;border:1px solid rgba(217,180,106,.35)}
+.deco::before{content:"";position:absolute;inset:8px;border:1px solid rgba(217,180,106,.18)}
+.deco i{position:absolute;width:46px;height:46px;border:2px solid var(--gold)}
+.deco i:nth-child(1){top:-2px;left:-2px;border-right:0;border-bottom:0}
+.deco i:nth-child(2){top:-2px;right:-2px;border-left:0;border-bottom:0}
+.deco i:nth-child(3){bottom:-2px;left:-2px;border-right:0;border-top:0}
+.deco i:nth-child(4){bottom:-2px;right:-2px;border-left:0;border-top:0}
+.hero .wrap{padding-block:72px 64px;width:100%}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-deco);font-size:13px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold2)}
+.kicker::before,.kicker::after{content:"";width:34px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--f-deco);font-weight:600;font-size:clamp(46px,10.5vw,124px);letter-spacing:.04em;margin:18px 0 6px;line-height:.98}
+.hero h1 em{display:block;font-family:var(--f-it);font-style:italic;font-weight:500;letter-spacing:0;text-transform:none;font-size:.42em;color:var(--ink);margin-top:.18em}
+.sub{font-size:clamp(15px,2.2vw,18px);color:var(--muted);max-width:40ch;margin:14px auto 0}
+.sub b{color:var(--ink);font-weight:700}
+.cd{display:flex;justify-content:center;gap:clamp(6px,2vw,14px);margin-top:30px}
+.cd div{width:clamp(66px,18vw,96px);padding:12px 4px 10px;border:1px solid var(--line);background:rgba(13,12,10,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)}
+.cd b{display:block;font-family:var(--f-deco);font-size:clamp(26px,6vw,40px);font-weight:600;line-height:1;font-variant-numeric:tabular-nums;color:var(--gold2)}
+.cd span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hero .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.scroll{position:absolute;left:50%;bottom:30px;width:22px;height:36px;border:1.5px solid var(--gold);border-radius:12px;transform:translateX(-50%);opacity:.7}
+.scroll::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--gold);transform:translateX(-50%);animation:sc 1.8s infinite}
+@keyframes sc{60%{transform:translate(-50%,10px);opacity:0}100%{opacity:0}}
+@media (max-width:600px){.scroll{display:none}.deco{inset:10px}}
+
+/* jiskry */
+.sparks{position:absolute;inset:0;z-index:-1;pointer-events:none}
+
+/* info pruh */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--bg2);margin-top:-1px}
+.facts div{padding:22px 20px;border-right:1px solid var(--line)}
+.facts div:last-child{border-right:0}
+.facts small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.facts b{display:block;font-family:var(--f-deco);font-size:19px;font-weight:600;margin-top:4px;line-height:1.25}
+.facts span{font-size:14px;color:var(--muted)}
+@media (max-width:820px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* sekce */
+section{padding-block:96px 8px}
+.sh{text-align:center;margin-bottom:46px}
+.sh .kicker{font-size:12px}
+.sh h2{font-family:var(--f-deco);font-weight:600;font-size:clamp(32px,5.4vw,56px);letter-spacing:.03em;margin-top:14px}
+.sh p{color:var(--muted);max-width:56ch;margin:14px auto 0}
+.orn{display:block;width:120px;height:14px;margin:18px auto 0;color:var(--gold)}
+
+/* program */
+.prog{position:relative;max-width:820px;margin-inline:auto}
+.prog::before{content:"";position:absolute;left:96px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--gold),rgba(217,180,106,.1))}
+.pi{display:grid;grid-template-columns:76px 1fr;gap:40px;padding:14px 0;position:relative}
+.pi time{font-family:var(--f-deco);font-weight:700;font-size:20px;color:var(--gold2);text-align:right;padding-top:16px}
+.pi::before{content:"";position:absolute;left:91px;top:30px;width:11px;height:11px;background:var(--bg);border:2px solid var(--gold);transform:rotate(45deg);transition:background .3s}
+.pi:hover::before{background:var(--gold)}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;transition:border-color .3s,transform .3s}
+.pi:hover .pc{border-color:rgba(217,180,106,.55);transform:translateX(4px)}
+.pc h3{font-size:18px;font-weight:800}
+.pc p{color:var(--muted);font-size:15px;margin-top:3px}
+.pc .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1a150c;background:var(--gold);padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:3px}
+@media (max-width:600px){.prog::before{left:58px}.pi{grid-template-columns:44px 1fr;gap:30px}.pi time{font-size:16px}.pi::before{left:53px}}
+
+/* fotopás */
+.strip{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:12px;margin-top:96px}
+.strip figure{margin:0;overflow:hidden;border-radius:var(--r);position:relative;aspect-ratio:4/5}
+.strip figure:nth-child(1){aspect-ratio:auto}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.strip figure:hover img{transform:scale(1.05)}
+.strip figcaption{position:absolute;left:14px;bottom:12px;font-family:var(--f-it);font-style:italic;font-size:18px;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+@media (max-width:700px){.strip{grid-template-columns:1fr 1fr}.strip figure:nth-child(1){grid-column:1/-1;aspect-ratio:16/10}}
+
+/* vstupenky */
+.tix{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tk{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;overflow:hidden;transition:transform .3s,border-color .3s}
+.tk:hover{transform:translateY(-4px);border-color:rgba(217,180,106,.6)}
+.tk::after{content:"";position:absolute;right:-1px;top:50%;width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--line);transform:translate(50%,-50%)}
+.tk::before{content:"";position:absolute;left:-1px;top:50%;width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--line);transform:translate(-50%,-50%)}
+.tk small{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.tk h3{font-family:var(--f-deco);font-size:24px;font-weight:600;margin:6px 0 4px}
+.tk .price{font-family:var(--f-deco);font-size:42px;font-weight:700;line-height:1.1}
+.tk .price span{font-size:16px;color:var(--muted);font-family:var(--f-body);font-weight:600}
+.tk ul{list-style:none;padding:0;margin:14px 0 0;font-size:15px;color:var(--muted)}
+.tk li{padding:4px 0 4px 22px;position:relative}
+.tk li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.tk.hot{border-color:var(--gold);background:linear-gradient(160deg,rgba(217,180,106,.16),var(--card) 60%)}
+.sold{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.bar{flex:1;min-width:200px;height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);background-size:220% 100%;animation:shine 4s linear infinite;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+@media (max-width:820px){.tix{grid-template-columns:1fr}}
+
+/* zasedací pořádek */
+.seat-wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-top:40px}
+.hall{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:18px;position:relative}
+.stage{margin:0 auto 18px;max-width:340px;text-align:center;font-family:var(--f-deco);font-size:12px;letter-spacing:.3em;color:#1a150c;background:var(--grad);background-size:220% 100%;animation:shine 7s linear infinite;padding:7px;clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
+.floor{margin:0 auto 16px;max-width:240px;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);padding:14px 6px;border-radius:10px}
+.tables{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2vw,18px)}
+.tbl{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.tbl .t{width:46%;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-family:var(--f-deco);font-size:clamp(11px,2.4vw,14px);font-weight:700;color:var(--gold2)}
+.seat{position:absolute;width:21%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--gold);background:transparent;padding:0;cursor:pointer;transition:transform .2s,background .2s}
+.seat:hover:not(:disabled){transform:scale(1.18)}
+.seat.sel{background:var(--gold);box-shadow:0 0 12px rgba(217,180,106,.8)}
+.seat.mine{background:var(--ok);border-color:var(--ok)}
+.seat:disabled{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.12);cursor:not-allowed}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--gold);vertical-align:-1px;margin-right:6px}
+.legend .l2{background:var(--gold)}.legend .l3{background:rgba(255,255,255,.12);border-color:transparent}.legend .l4{background:var(--ok);border-color:var(--ok)}
+.res{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.res h3{font-family:var(--f-deco);font-size:22px;font-weight:600}
+.res .pick{margin:12px 0 16px;min-height:52px;font-size:15px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:13px;font-weight:700;background:rgba(217,180,106,.15);border:1px solid var(--line);color:var(--gold2);padding:3px 10px;border-radius:99px}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.total b{font-family:var(--f-deco);font-size:28px}
+label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin:12px 0 5px}
+input,textarea,select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,180,106,.18)}
+textarea{resize:vertical;min-height:90px}
+.res .btn{width:100%;margin-top:16px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.done{border:1px solid var(--ok);background:rgba(143,211,168,.08);border-radius:12px;padding:14px;margin-top:14px;font-size:15px}
+.done b{color:var(--ok)}
+.done code{font-family:ui-monospace,Consolas,monospace;font-weight:700;color:var(--gold2);font-size:16px}
+@media (max-width:900px){.seat-wrap{grid-template-columns:1fr}}
+
+/* třída */
+.cls{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.cls-img{position:relative}
+.cls-img img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%;filter:grayscale(1) contrast(1.05)}
+.cls-img::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--gold);border-radius:var(--r);z-index:-1}
+.cls h2{font-family:var(--f-deco);font-weight:600;font-size:clamp(30px,4.6vw,48px)}
+.cls .lead{color:var(--muted);margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.stats div{border:1px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center;background:var(--card)}
+.stats b{display:block;font-family:var(--f-deco);font-size:34px;color:var(--gold2);line-height:1.1}
+.stats span{font-size:13px;color:var(--muted)}
+.names{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.names span{font-size:13px;padding:4px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);transition:color .2s,border-color .2s}
+.names span:hover{color:var(--gold2);border-color:var(--gold)}
+.teacher{display:flex;gap:14px;align-items:center;margin-top:22px;padding:14px;border-radius:12px;background:linear-gradient(120deg,rgba(217,180,106,.14),transparent)}
+.av{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-deco);font-weight:700;color:#1a150c;background:var(--grad)}
+.teacher p{font-size:15px}.teacher small{display:block;color:var(--muted);font-size:13px}
+@media (max-width:820px){.cls{grid-template-columns:1fr}.cls-img{max-width:420px;margin-inline:auto;width:calc(100% - 14px)}}
+
+/* tombola */
+.tomb{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prize{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.prize .n{font-family:var(--f-deco);font-size:54px;font-weight:700;line-height:1;opacity:.9}
+.prize h3{font-size:18px;font-weight:800;margin-top:8px}
+.prize p{color:var(--muted);font-size:14px;margin-top:4px}
+.prize.first{grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px;background:linear-gradient(0deg,rgba(13,12,10,.95),rgba(13,12,10,.2)),url(img/sekt.jpg) center/cover}
+.spons{margin-top:34px;text-align:center}
+.spons small{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.marq{overflow:hidden;margin-top:14px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marq div{display:flex;gap:44px;width:max-content;animation:mq 30s linear infinite}
+.marq span{font-family:var(--f-deco);font-weight:600;font-size:20px;color:var(--muted);white-space:nowrap}
+.marq span::before{content:"◆";color:var(--gold);font-size:11px;margin-right:44px;vertical-align:3px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (max-width:820px){.tomb{grid-template-columns:1fr 1fr}.prize.first{grid-column:1/-1;grid-row:auto;min-height:220px}}
+@media (max-width:460px){.tomb{grid-template-columns:1fr}}
+
+/* vzkazy */
+.wall{display:grid;grid-template-columns:1fr 1.4fr;gap:18px;align-items:start}
+.msgs{display:grid;gap:12px;max-height:520px;overflow:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--gold3) transparent}
+.msg{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;animation:pop .5s cubic-bezier(.2,.8,.2,1.2) both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
+.msg p{font-family:var(--f-it);font-style:italic;font-size:18px;line-height:1.45}
+.msg small{display:block;margin-top:8px;color:var(--gold);font-weight:700;font-size:13px}
+@media (max-width:820px){.wall{grid-template-columns:1fr}}
+
+/* galerie */
+.gal{columns:3 240px;column-gap:12px}
+@media (max-width:600px){.gal{columns:2;column-gap:10px}.gal button{margin-bottom:10px}}
+.gal button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;border-radius:var(--r);overflow:hidden;cursor:zoom-in;background:var(--card);break-inside:avoid;position:relative}
+.gal img{width:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
+.gal button:hover img{transform:scale(1.04);filter:brightness(1.08)}
+.album{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;padding:20px 22px;border:1px dashed var(--gold);border-radius:var(--r)}
+.album p{color:var(--muted);font-size:15px}.album b{color:var(--ink)}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(5,5,4,.94);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-height:86vh;max-width:min(1200px,100%);border-radius:10px;object-fit:contain}
+.lb button{position:absolute;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(13,12,10,.7);color:var(--gold2);font-size:22px;cursor:pointer}
+.lb .x{top:calc(16px + env(safe-area-inset-top,0px));right:16px}.lb .pv{left:12px;top:50%}.lb .nx{right:12px;top:50%}
+
+/* místo */
+.place{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pl-img{position:relative;border-radius:var(--r);overflow:hidden;min-height:360px}
+.pl-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pl-img div{position:absolute;left:0;right:0;bottom:0;padding:60px 22px 22px;background:linear-gradient(transparent,rgba(13,12,10,.8) 35%,rgba(13,12,10,.96))}
+.pl-img h3{font-family:var(--f-deco);font-size:26px;font-weight:600}
+.pl-img p{color:var(--muted)}
+.ways{display:grid;gap:12px}
+.way{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.way svg{flex:none;width:26px;height:26px;color:var(--gold);margin-top:2px}
+.way h3{font-size:16px;font-weight:800}
+.way p{color:var(--muted);font-size:15px}
+@media (max-width:820px){.place{grid-template-columns:1fr}.pl-img{min-height:300px}}
+
+/* faq */
+.faq{max-width:820px;margin-inline:auto;display:grid;gap:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);transition:border-color .3s}
+details[open]{border-color:rgba(217,180,106,.55)}
+summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:22px;top:50%;width:10px;height:10px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+details p{padding:0 20px 18px;color:var(--muted)}
+
+/* kontakty */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mate{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-align:center}
+.mate .av{margin:0 auto 10px;width:56px;height:56px;font-size:18px}
+.mate h3{font-size:17px;font-weight:800}
+.mate p{color:var(--muted);font-size:14px}
+.mate a{display:inline-block;margin-top:8px;color:var(--gold2);font-weight:700;font-size:14px;text-decoration:none}
+@media (max-width:820px){.team{grid-template-columns:1fr 1fr}}
+
+/* závěr */
+.final{margin-top:110px;position:relative;text-align:center;padding:100px 0;overflow:hidden;isolation:isolate}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.45}
+.final::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--bg),rgba(13,12,10,.4),var(--bg))}
+.final h2{font-family:var(--f-deco);font-size:clamp(34px,7vw,76px);font-weight:600}
+.final p{color:var(--muted);margin:14px auto 28px;max-width:44ch}
+footer{border-top:1px solid var(--line);padding:30px 0 calc(30px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--gold2);font-weight:700;text-decoration:none}
+
+/* plovoucí tlačítko na mobilu */
+.fab{white-space:nowrap;position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;transform:translate(-50%,120px);transition:transform .45s cubic-bezier(.2,.8,.2,1.1);display:none}
+.fab.show{transform:translate(-50%,0)}
+@media (max-width:700px){.fab{display:inline-flex}}
+
+/* objevování */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* konfety */
+.cf{position:fixed;inset:0;pointer-events:none;z-index:70}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demo">Ukázka webu pro maturitní ples. Třída, jména i místo jsou smyšlené. Vytvořila <a href="https://madebyemko.cz" target="_blank" rel="noopener">MadeByEmKo →</a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#uvod" aria-label="Zlatá dvacátá, na začátek">
+      <svg viewBox="0 0 40 40" fill="none" stroke="#d9b46a" stroke-width="1.6" aria-hidden="true"><path d="M20 2 38 20 20 38 2 20Z"/><path d="M20 8 32 20 20 32 8 20Z" opacity=".5"/><path d="M20 2v36M2 20h36" opacity=".35"/></svg>
+      <span>PLES 4.A</span>
+    </a>
+    <nav class="links" aria-label="Hlavní menu">
+      <a href="#program">Program</a>
+      <a href="#vstupenky">Vstupenky</a>
+      <a href="#trida">Třída</a>
+      <a href="#tombola">Tombola</a>
+      <a href="#vzkazy">Vzkazy</a>
+      <a href="#galerie">Fotky</a>
+      <a href="#misto">Místo</a>
+    </nav>
+    <a class="btn sm cta" href="#vstupenky">Rezervovat místo</a>
+    <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu" hidden>
+  <a href="#program">Program</a>
+  <a href="#vstupenky">Vstupenky a místa</a>
+  <a href="#trida">Naše třída</a>
+  <a href="#tombola">Tombola</a>
+  <a href="#vzkazy">Vzkazy</a>
+  <a href="#galerie">Fotky</a>
+  <a href="#misto">Místo a doprava</a>
+</nav>
+
+<main>
+<section class="hero" id="uvod" style="padding:0">
+  <img src="img/hero.jpg" alt="Plesový sál se zlatými lustry" fetchpriority="high">
+  <canvas class="sparks" aria-hidden="true"></canvas>
+  <div class="deco" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <p class="kicker">Maturitní ples 2027</p>
+    <h1><span class="gold">Zlatá dvacátá</span><em>třída 4.A vás zve na večer ve stylu art deco</em></h1>
+    <p class="sub"><b>Sobota 16. ledna 2027</b><br>Městský společenský dům<br>Gymnázium Na Výsluní</p>
+    <div class="cd" aria-label="Odpočet do plesu" role="timer">
+      <div><b data-cd="d">00</b><span>dní</span></div>
+      <div><b data-cd="h">00</b><span>hodin</span></div>
+      <div><b data-cd="m">00</b><span>minut</span></div>
+      <div><b data-cd="s">00</b><span>sekund</span></div>
+    </div>
+    <div class="acts">
+      <a class="btn" href="#vstupenky">Vybrat místo u stolu <span aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="#program">Program večera</a>
+    </div>
+  </div>
+  <span class="scroll" aria-hidden="true"></span>
+</section>
+
+<div class="wrap">
+  <div class="facts rv">
+    <div><small>Kdy</small><b>So 16. 1. 2027</b><span>začátek v 19:00</span></div>
+    <div><small>Kde</small><b>Velký sál</b><span>Městský společenský dům</span></div>
+    <div><small>Dress code</small><b>Black tie</b><span>zlatý doplněk vítán</span></div>
+    <div><small>Vstupenky</small><b>od 300 Kč</b><span>místa u stolů od 450 Kč</span></div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Program večera</p>
+      <h2>Od fanfár po <span class="gold">afterparty</span></h2>
+      <svg class="orn" viewBox="0 0 120 14" aria-hidden="true"><path d="M0 7h46M74 7h46" stroke="currentColor"/><path d="M60 1 66 7 60 13 54 7Z" fill="currentColor"/></svg>
+    </div>
+    <div class="prog">
+      <div class="pi rv"><time>18:00</time><div class="pc"><h3>Otevření sálu a šatny</h3><p>Uvítací drink ve foyer a fotokoutek ve stylu dvacátých let.</p></div></div>
+      <div class="pi rv"><time>19:00</time><div class="pc"><h3>Slavnostní zahájení</h3><p>Fanfáry, úvodní slovo ředitele školy a třídní učitelky.</p></div></div>
+      <div class="pi rv"><time>19:20</time><div class="pc"><h3>Nástup maturantů a šerpování<span class="tag">hlavní bod</span></h3><p>Třída 4.A převezme šerpy. Připravte si kapesníčky a telefony.</p></div></div>
+      <div class="pi rv"><time>19:50</time><div class="pc"><h3>Předtančení</h3><p>Choreografie na swing z dvacátých let, kterou jsme trénovali od září.</p></div></div>
+      <div class="pi rv"><time>20:15</time><div class="pc"><h3>Volná zábava s kapelou</h3><p>Valčík, polka, swing i současné hity. Parket patří všem.</p></div></div>
+      <div class="pi rv"><time>22:00</time><div class="pc"><h3>Losování tomboly</h3><p>Hlavní ceny losujeme na pódiu. Losy koupíte u vchodu.</p></div></div>
+      <div class="pi rv"><time>00:00</time><div class="pc"><h3>Půlnoční překvapení<span class="tag">tajné</span></h3><p>Víc neprozradíme. Doporučujeme být v sále.</p></div></div>
+      <div class="pi rv"><time>00:30</time><div class="pc"><h3>Afterparty s DJ</h3><p>Do 2:00 hraje DJ v malém sále, rodiče mohou v klidu domů.</p></div></div>
+    </div>
+
+    <div class="strip">
+      <figure class="rv"><img src="img/tanec.jpg" alt="Páry tančí na plesovém parketu" loading="lazy"><figcaption>Valčík do rána</figcaption></figure>
+      <figure class="rv d1"><img src="img/saty.jpg" alt="Hosté ve večerních šatech na plese" loading="lazy"><figcaption>Black tie</figcaption></figure>
+      <figure class="rv d2"><img src="img/pulnoc.jpg" alt="Konfety padají nad tančícím sálem" loading="lazy"><figcaption>Půlnoc</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- VSTUPENKY -->
+<section id="vstupenky">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Vstupenky a místa</p>
+      <h2>Vyberte si <span class="gold">svůj stůl</span></h2>
+      <p>Klikněte na volná místa v plánku sálu, vyplňte jméno a místa jsou vaše. Platba převodem, vstupenky vyzvednete u vchodu.</p>
+    </div>
+    <div class="tix">
+      <div class="tk rv"><small>Vstup</small><h3>Na stání</h3><div class="price">300 <span>Kč</span></div><ul><li>vstup do celého sálu i na balkon</li><li>afterparty v ceně</li><li>prodej i na místě, dokud budou</li></ul></div>
+      <div class="tk hot rv d1"><small>Nejoblíbenější</small><h3>Místo u stolu</h3><div class="price">450 <span>Kč</span></div><ul><li>konkrétní místo podle plánku</li><li>blízko parketu a pódia</li><li>afterparty v ceně</li></ul></div>
+      <div class="tk rv d2"><small>Pro rodiny</small><h3>Celý stůl</h3><div class="price">3 400 <span>Kč</span></div><ul><li>8 míst u jednoho stolu</li><li>láhev sektu na stůl</li><li>vyberte všech 8 míst u stolu</li></ul></div>
+    </div>
+    <div class="sold rv"><span><b data-sold>0</b> z 96 míst u stolů je zarezervováno</span><div class="bar"><i></i></div></div>
+
+    <div class="seat-wrap">
+      <div class="hall rv">
+        <div class="stage">PÓDIUM · KAPELA</div>
+        <div class="floor">Taneční parket</div>
+        <div class="tables" id="tables"></div>
+        <div class="legend"><span><i></i>volné</span><span><i class="l2"></i>vybrané</span><span><i class="l3"></i>obsazené</span><span><i class="l4"></i>vaše</span></div>
+      </div>
+      <form class="res rv d1" id="resForm" novalidate>
+        <h3>Vaše rezervace</h3>
+        <div class="pick" id="pick">Zatím nemáte vybrané žádné místo. Klikněte na volné kolečko u stolu.</div>
+        <div class="total"><span>Celkem</span><b><span id="sum">0</span> Kč</b></div>
+        <label for="rn">Jméno a příjmení</label>
+        <input id="rn" name="jmeno" autocomplete="name" required placeholder="Např. Jana Nováková">
+        <label for="re">E-mail pro potvrzení</label>
+        <input id="re" name="email" type="email" autocomplete="email" required placeholder="jana@email.cz">
+        <label for="rf">Ke komu patříte?</label>
+        <select id="rf" name="maturant"><option>Rodina maturanta</option><option>Kamarád/ka</option><option>Učitel/ka</option><option>Absolvent školy</option></select>
+        <button class="btn" type="submit" id="resBtn" disabled>Rezervovat místa</button>
+        <p class="note">V ukázce se rezervace uloží jen ve vašem prohlížeči. Na skutečném webu ji uvidí celá třída i ostatní hosté a potvrzení s platebními údaji přijde e-mailem.</p>
+        <div class="done" id="done" hidden></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TŘÍDA -->
+<section id="trida">
+  <div class="wrap cls">
+    <div class="cls-img rv"><img src="img/trida.jpg" alt="Maturanti ve společenském oblečení" loading="lazy"></div>
+    <div class="rv d1">
+      <p class="kicker">Naše třída</p>
+      <h2 style="margin-top:12px">Čtyři roky, jedna <span class="gold">4.A</span></h2>
+      <p class="lead">Jsme třída se zaměřením na humanitní obory. Za čtyři roky jsme zvládli dva lyžáky, jednu školu v přírodě, výlet do Vídně a nespočet písemek z matematiky. Teď nás čeká maturita a předtím ještě jeden pořádný večer se všemi, kdo nás celou dobu podporovali.</p>
+      <div class="stats">
+        <div><b data-count="29">0</b><span>maturantů</span></div>
+        <div><b data-count="4">0</b><span>roky spolu</span></div>
+        <div><b data-count="48">0</b><span>hodin tréninku</span></div>
+      </div>
+      <div class="names" aria-label="Maturanti">
+        <span>Adéla B.</span><span>Barbora Č.</span><span>Daniel D.</span><span>Eliška F.</span><span>Filip H.</span><span>Hana J.</span><span>Jakub K.</span><span>Julie K.</span><span>Karolína L.</span><span>Lukáš M.</span><span>Marie N.</span><span>Matěj O.</span><span>Natálie P.</span><span>Ondřej P.</span><span>Petra R.</span><span>Sára S.</span><span>Šimon Š.</span><span>Tereza T.</span><span>Tomáš V.</span><span>Vojtěch Z.</span><span>a dalších 9</span>
+      </div>
+      <div class="teacher"><span class="av">MK</span><p><b>Mgr. Martina Kovářová</b><small>třídní učitelka, češtinářka a nejlepší tanečnice předtančení</small></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOMBOLA -->
+<section id="tombola">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Tombola</p>
+      <h2>Každý <span class="gold">pátý los</span> vyhrává</h2>
+      <p>Losy po 30 Kč koupíte u vchodu a během večera u našich spolužáků se šerpou. Výtěžek jde na maturitní večírek a dar škole.</p>
+    </div>
+    <div class="tomb">
+      <div class="prize first rv"><div class="n gold">1.</div><h3>Víkend pro dva v horském hotelu</h3><p>Dvě noci s polopenzí a wellness</p></div>
+      <div class="prize rv d1"><div class="n gold">2.</div><h3>Večeře v degustačním menu</h3><p>Pro dva, včetně párování vín</p></div>
+      <div class="prize rv d2"><div class="n gold">3.</div><h3>Let balonem</h3><p>Poukaz pro jednu osobu</p></div>
+      <div class="prize rv d1"><div class="n gold">4.</div><h3>Profesionální focení</h3><p>Hodina v ateliéru a 10 upravených fotek</p></div>
+      <div class="prize rv d2"><div class="n gold">5.</div><h3>Koš dobrot z farmy</h3><p>Sýry, med, víno a domácí pečivo</p></div>
+    </div>
+    <div class="spons rv">
+      <small>Děkujeme sponzorům</small>
+      <div class="marq" aria-label="Sponzoři: Pekárna U Mlýna, Autoservis Novák, Květinářství Lilie, Kavárna Na Rohu, Stavebniny Horák, Fotoateliér Světlo, Lékárna U Zlatého hada, Restaurace Na Náměstí">
+        <div aria-hidden="true">
+          <span>Pekárna U Mlýna</span><span>Autoservis Novák</span><span>Květinářství Lilie</span><span>Kavárna Na Rohu</span><span>Stavebniny Horák</span><span>Fotoateliér Světlo</span><span>Lékárna U Zlatého hada</span><span>Restaurace Na Náměstí</span>
+          <span>Pekárna U Mlýna</span><span>Autoservis Novák</span><span>Květinářství Lilie</span><span>Kavárna Na Rohu</span><span>Stavebniny Horák</span><span>Fotoateliér Světlo</span><span>Lékárna U Zlatého hada</span><span>Restaurace Na Náměstí</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VZKAZY -->
+<section id="vzkazy">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Vzkazy</p>
+      <h2>Napište jim <span class="gold">pár slov</span></h2>
+      <p>Pro babičky, rodiče, kamarády i učitele. Vzkazy si třída vytiskne do pamětní knihy.</p>
+    </div>
+    <div class="wall">
+      <form class="res rv" id="msgForm" novalidate>
+        <h3>Nový vzkaz</h3>
+        <label for="mt">Vzkaz</label>
+        <textarea id="mt" maxlength="240" required placeholder="Držíme palce u maturity…"></textarea>
+        <label for="ma">Podpis</label>
+        <input id="ma" maxlength="40" required placeholder="Např. babička Věra">
+        <button class="btn" type="submit">Přidat vzkaz</button>
+        <p class="note">V ukázce se vzkaz uloží jen ve vašem prohlížeči.</p>
+      </form>
+      <div class="msgs" id="msgs" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Fotky</p>
+      <h2>Ze šerpování i <span class="gold">z parketu</span></h2>
+      <p>Nejhezčí fotky přidáme sem. Všechny fotky z plesu najdete ve sdíleném albu.</p>
+    </div>
+    <div class="gal" id="gal">
+      <button type="button" class="rv"><img src="img/holky.jpg" alt="Maturantky v plesových šatech" loading="lazy"></button>
+      <button type="button" class="rv d1"><img src="img/dj.jpg" alt="DJ na afterparty" loading="lazy"></button>
+      <button type="button" class="rv d2"><img src="img/sekt.jpg" alt="Sklenky se sektem na přípitek" loading="lazy"></button>
+      <button type="button" class="rv"><img src="img/afterparty.jpg" alt="Afterparty pod diskokoulí" loading="lazy"></button>
+      <button type="button" class="rv d1"><img src="img/sal.jpg" alt="Lustry ve velkém sále" loading="lazy"></button>
+      <button type="button" class="rv d2"><img src="img/pulnoc.jpg" alt="Půlnoční konfety v sále" loading="lazy"></button>
+    </div>
+    <div class="album rv">
+      <p><b>Sdílené album z plesu</b><br>Fotky od fotografa i z vašich telefonů na jednom místě. Odkaz zveřejníme po plese.</p>
+      <a class="btn ghost sm" href="#galerie" aria-disabled="true" onclick="return false">Album bude po plese</a>
+    </div>
+  </div>
+</section>
+
+<!-- MÍSTO -->
+<section id="misto">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Místo a doprava</p>
+      <h2>Jak se k nám <span class="gold">dostanete</span></h2>
+    </div>
+    <div class="place">
+      <div class="pl-img rv"><img src="img/sal.jpg" alt="Velký sál společenského domu" loading="lazy"><div><h3>Městský společenský dům</h3><p>Velký sál, 1. patro · Náměstí Svobody 1</p><a class="btn sm" style="margin-top:14px" href="https://mapy.com/" target="_blank" rel="noopener">Navigovat v Mapy.com</a></div></div>
+      <div class="ways">
+        <div class="way rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M3 11h18M7 17v3M17 17v3"/><circle cx="7.5" cy="14" r=".8" fill="currentColor"/><circle cx="16.5" cy="14" r=".8" fill="currentColor"/></svg><div><h3>MHD</h3><p>Zastávka Náměstí Svobody, 2 minuty pěšky. Noční linky jezdí každou půlhodinu.</p></div></div>
+        <div class="way rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><div><h3>Parkování</h3><p>Parkoviště za budovou je večer zdarma. Ve 2:00 vám rádi zavoláme taxi.</p></div></div>
+        <div class="way rv d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M8.5 6h7l-1 4h-5Z"/><path d="M6 21c0-6 2.7-11 6-11s6 5 6 11Z"/></svg><div><h3>Šatna</h3><p>Hlídaná šatna v přízemí za 20 Kč. Kabelky a telefony si raději nechte u sebe.</p></div></div>
+        <div class="way rv d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg><div><h3>Bezbariérový přístup</h3><p>Výtah z boční vstupní haly vede přímo k sálu.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="dotazy">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Časté dotazy</p>
+      <h2>Na co se <span class="gold">ptáte</span></h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Musím dodržet dress code?</summary><p>Prosíme o společenské oblečení: oblek nebo smoking, večerní či koktejlové šaty. Téma dvacátých let je bonus, ne povinnost. Peří, perly a motýlky ale potěší.</p></details>
+      <details><summary>Jak zaplatím rezervaci?</summary><p>Po rezervaci vám přijde e-mail s číslem účtu a variabilním symbolem. Rezervace platí 7 dní. Vstupenky si vyzvednete u vchodu na své jméno.</p></details>
+      <details><summary>Můžu přijít s dětmi?</summary><p>Ano. Děti do 10 let mají vstup na stání zdarma. Pokud chtějí sedět, rezervujte jim místo u stolu.</p></details>
+      <details><summary>Dá se platit na místě kartou?</summary><p>Vstupenky na stání, losy do tomboly i bar ano, kartou i hotově.</p></details>
+      <details><summary>Bude k dispozici jídlo?</summary><p>V restauraci v přízemí je teplá kuchyně do 23:00 a na baru obložené mísy a chlebíčky.</p></details>
+      <details><summary>Komu napsat, když něco nevím?</summary><p>Organizačnímu týmu níže. Nejrychleji odpovídáme na Instagramu.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKTY -->
+<section id="kontakt">
+  <div class="wrap">
+    <div class="sh rv">
+      <p class="kicker">Organizační tým</p>
+      <h2>Kdo za plesem <span class="gold">stojí</span></h2>
+    </div>
+    <div class="team">
+      <div class="mate rv"><span class="av">TT</span><h3>Tereza T.</h3><p>vstupenky a rezervace</p><a href="#kontakt">Napsat</a></div>
+      <div class="mate rv d1"><span class="av">JK</span><h3>Jakub K.</h3><p>tombola a sponzoři</p><a href="#kontakt">Napsat</a></div>
+      <div class="mate rv d2"><span class="av">NP</span><h3>Natálie P.</h3><p>předtančení a program</p><a href="#kontakt">Napsat</a></div>
+      <div class="mate rv d3"><span class="av">ŠŠ</span><h3>Šimon Š.</h3><p>Instagram a fotky</p><a href="#kontakt">@ples4a</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <img src="img/pulnoc.jpg" alt="" loading="lazy">
+  <div class="wrap rv">
+    <p class="kicker">16. 1. 2027</p>
+    <h2 style="margin-top:14px">Uvidíme se <span class="gold">na parketu</span></h2>
+    <p>Děkujeme, že s námi oslavíte konec jedné kapitoly. Bez vás by to nebyl ten pravý ples.</p>
+    <a class="btn" href="#vstupenky">Rezervovat místo <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2027 Třída 4.A · Gymnázium Na Výsluní (smyšlené)</span>
+    <span>Web vytvořila <a href="https://madebyemko.cz" target="_blank" rel="noopener">MadeByEmKo</a> · fotky Unsplash</span>
+  </div>
+</footer>
+
+<a class="btn fab" href="#vstupenky">Rezervovat místo <span aria-hidden="true">→</span></a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Fotka" hidden>
+  <img alt="">
+  <button class="x" type="button" aria-label="Zavřít">✕</button>
+  <button class="pv" type="button" aria-label="Předchozí">‹</button>
+  <button class="nx" type="button" aria-label="Další">›</button>
+</div>
+<canvas class="cf" id="cf" aria-hidden="true"></canvas>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* menu */
+const bg=$('.burger'),mn=$('#mnav');
+function menu(o){bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Zavřít menu':'Otevřít menu');if(o){mn.hidden=false;requestAnimationFrame(()=>mn.classList.add('open'))}else{mn.classList.remove('open');setTimeout(()=>{if(!mn.classList.contains('open'))mn.hidden=true},300)}document.body.style.overflow=o?'hidden':''}
+bg.addEventListener('click',()=>menu(bg.getAttribute('aria-expanded')!=='true'));
+$$('a',mn).forEach(a=>a.addEventListener('click',()=>menu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
+
+/* odpočet */
+const T=new Date('2027-01-16T19:00:00+01:00').getTime();
+const cd=k=>$('[data-cd="'+k+'"]');
+function tick(){let s=Math.max(0,Math.floor((T-Date.now())/1000));const d=Math.floor(s/86400);s%=86400;cd('d').textContent=d;cd('h').textContent=String(Math.floor(s/3600)).padStart(2,'0');cd('m').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');cd('s').textContent=String(s%60).padStart(2,'0')}
+tick();setInterval(tick,1000);
+
+/* objevování + počítadla */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const n=+e.target.dataset.count,t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1400);e.target.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};reduce?e.target.textContent=n:requestAnimationFrame(f)}),{threshold:.5});
+$$('[data-count]').forEach(el=>co.observe(el));
+
+/* aktivní odkaz v menu */
+const nl=$$('.links a');
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nl.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('main section[id]').forEach(s=>so.observe(s));
+
+/* paralaxa + plovoucí tlačítko */
+const hi=$('.hero>img'),fab=$('.fab'),hero=$('.hero'),tix=$('#vstupenky');
+let tk=false;
+function onScroll(){const y=scrollY;if(!reduce&&y<innerHeight*1.2)hi.style.transform='translateY('+(y*.25)+'px)';
+const r=tix.getBoundingClientRect();fab.classList.toggle('show',y>hero.offsetHeight*.8&&!(r.top<innerHeight&&r.bottom>0));tk=false}
+addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+/* zlaté jiskry v úvodu */
+const sc=$('.sparks'),sx=sc.getContext('2d');let P=[];
+function rs(){sc.width=sc.offsetWidth*devicePixelRatio;sc.height=sc.offsetHeight*devicePixelRatio;P=Array.from({length:Math.round(sc.offsetWidth/14)},()=>({x:Math.random()*sc.width,y:Math.random()*sc.height,r:(Math.random()*1.6+.4)*devicePixelRatio,v:(Math.random()*.35+.1)*devicePixelRatio,a:Math.random()*Math.PI*2}))}
+function draw(){sx.clearRect(0,0,sc.width,sc.height);for(const p of P){p.y-=p.v;p.a+=.02;if(p.y<-5){p.y=sc.height+5;p.x=Math.random()*sc.width}const al=.35+.35*Math.sin(p.a);sx.fillStyle='rgba(243,220,164,'+al+')';sx.beginPath();sx.arc(p.x+Math.sin(p.a)*6,p.y,p.r,0,7);sx.fill()}if(vis)requestAnimationFrame(draw)}
+let vis=true;
+if(!reduce){rs();addEventListener('resize',rs);new IntersectionObserver(([e])=>{const w=vis;vis=e.isIntersecting;if(vis&&!w)draw()}).observe(hero);draw()}
+
+/* konfety */
+const cf=$('#cf'),cx=cf.getContext('2d');
+function confetti(){if(reduce)return;cf.width=innerWidth*devicePixelRatio;cf.height=innerHeight*devicePixelRatio;const C=['#d9b46a','#f3dca4','#a8803c','#fff3d2','#f4ecdc'];let Q=Array.from({length:150},()=>({x:cf.width/2,y:cf.height*.6,vx:(Math.random()-.5)*26*devicePixelRatio,vy:(-Math.random()*22-8)*devicePixelRatio,w:(Math.random()*8+4)*devicePixelRatio,h:(Math.random()*5+3)*devicePixelRatio,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:C[Math.random()*C.length|0]}));const t0=performance.now();
+(function f(t){cx.clearRect(0,0,cf.width,cf.height);for(const q of Q){q.vy+=.6*devicePixelRatio;q.vx*=.985;q.x+=q.vx;q.y+=q.vy;q.r+=q.vr;cx.save();cx.translate(q.x,q.y);cx.rotate(q.r);cx.fillStyle=q.c;cx.fillRect(-q.w/2,-q.h/2,q.w,q.h);cx.restore()}if(t-t0<3200)requestAnimationFrame(f);else cx.clearRect(0,0,cf.width,cf.height)})(t0)}
+
+/* zasedací pořádek: 12 stolů × 8 míst */
+const PRICE=450,TABLE=3400,N=12,S=8;
+const taken=new Set();let seed=7;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+for(let t=1;t<=N;t++)for(let s=1;s<=S;s++)if(rnd()<(t<=4?.72:.38))taken.add(t+'-'+s);
+[...Array(S)].forEach((_,i)=>taken.add('2-'+(i+1)));
+let mine=store.get('ples4a-mista',[]);const sel=new Set();
+const tb=$('#tables');
+for(let t=1;t<=N;t++){const d=document.createElement('div');d.className='tbl';d.innerHTML='<span class="t">'+t+'</span>';
+for(let s=1;s<=S;s++){const a=(s-1)/S*Math.PI*2-Math.PI/2,b=document.createElement('button');b.type='button';b.className='seat';b.dataset.id=t+'-'+s;b.style.left=(50+38*Math.cos(a)-10.5)+'%';b.style.top=(50+38*Math.sin(a)-10.5)+'%';b.setAttribute('aria-label','Stůl '+t+', místo '+s);d.appendChild(b)}tb.appendChild(d)}
+const seats=$$('.seat',tb);
+function paint(){let cnt=0;seats.forEach(b=>{const id=b.dataset.id,m=mine.includes(id),tk=taken.has(id);b.classList.toggle('mine',m);b.classList.toggle('sel',sel.has(id));b.disabled=tk||m;b.setAttribute('aria-pressed',sel.has(id));if(tk||m)cnt++;b.title=m?'Vaše místo':tk?'Obsazeno':'Volné'});
+$('[data-sold]').textContent=cnt;$('.bar i').style.width=(cnt/(N*S)*100)+'%';
+const arr=[...sel].sort((a,b)=>{const[x,y]=a.split('-').map(Number),[u,v]=b.split('-').map(Number);return x-u||y-v});
+const byT={};arr.forEach(id=>{const[t]=id.split('-');(byT[t]=byT[t]||[]).push(id)});
+let sum=0;Object.entries(byT).forEach(([t,l])=>{sum+=l.length===S?TABLE:l.length*PRICE});
+$('#sum').textContent=sum.toLocaleString('cs-CZ');
+$('#pick').innerHTML=arr.length?'Vybraná místa ('+arr.length+'):<div class="chips">'+arr.map(id=>{const[t,s]=id.split('-');return'<span class="chip">stůl '+t+' · '+s+'</span>'}).join('')+'</div>'+(Object.values(byT).some(l=>l.length===S)?'<p class="note" style="color:var(--gold2)">Celý stůl za zvýhodněnou cenu 3 400 Kč a láhev sektu.</p>':''):'Zatím nemáte vybrané žádné místo. Klikněte na volné kolečko u stolu.';
+$('#resBtn').disabled=!arr.length}
+tb.addEventListener('click',e=>{const b=e.target.closest('.seat');if(!b||b.disabled)return;const id=b.dataset.id;sel.has(id)?sel.delete(id):sel.add(id);paint()});
+const sb=new IntersectionObserver(([e])=>{if(e.isIntersecting){paint();sb.disconnect()}},{threshold:.2});sb.observe($('.sold'));
+paint();$('.bar i').style.width='0';
+$('#resForm').addEventListener('submit',e=>{e.preventDefault();const n=$('#rn'),m=$('#re');
+if(!n.value.trim()){n.focus();n.setCustomValidity('Vyplňte jméno');n.reportValidity();n.setCustomValidity('');return}
+if(!/^\S+@\S+\.\S+$/.test(m.value)){m.focus();m.setCustomValidity('Zadejte platný e-mail');m.reportValidity();m.setCustomValidity('');return}
+const code='4A'+String(Math.floor(Math.random()*9000)+1000);const cnt=sel.size,sum=$('#sum').textContent;
+mine=[...mine,...sel];store.set('ples4a-mista',mine);sel.clear();paint();
+const d=$('#done');d.hidden=false;d.innerHTML='<b>Hotovo, '+n.value.trim().split(' ')[0].replace(/[<>&]/g,'')+'!</b> Rezervovali jste '+cnt+(cnt===1?' místo':cnt<5?' místa':' míst')+' za '+sum+' Kč. Kód rezervace: <code>'+code+'</code>. Potvrzení s platebními údaji by teď přišlo e-mailem.';
+confetti()});
+
+/* vzkazy */
+const base=[{t:'Ať vám maturita vyjde stejně krásně jako tenhle ples. Jsme na tebe pyšní!',a:'mamka a taťka Eliščini'},{t:'Čtyři roky uběhly jako voda. Děkuju za každou hodinu, i za ty, kdy jste si úkoly psali o přestávce.',a:'Martina Kovářová'},{t:'Drž se, bráško, a nezapomeň mi nechat jeden tanec.',a:'Klára, sestra Filipa'},{t:'Za našich časů jsme maturovali v sukni po kolena. Přeju hodně štěstí všem!',a:'babička Věra'}];
+const msgs=$('#msgs');
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function rm(){const l=[...store.get('ples4a-vzkazy',[]).slice().reverse(),...base];msgs.innerHTML=l.map(m=>'<div class="msg"><p>„'+esc(m.t)+'“</p><small>— '+esc(m.a)+'</small></div>').join('')}
+rm();
+$('#msgForm').addEventListener('submit',e=>{e.preventDefault();const t=$('#mt'),a=$('#ma');if(!t.value.trim()){t.reportValidity();return}if(!a.value.trim()){a.reportValidity();return}
+const l=store.get('ples4a-vzkazy',[]);l.push({t:t.value.trim(),a:a.value.trim()});store.set('ples4a-vzkazy',l);t.value='';a.value='';rm();msgs.scrollTop=0});
+
+/* galerie */
+const lb=$('#lb'),li=$('img',lb),gi=$$('#gal img');let gx=0,lastF;
+function show(i){gx=(i+gi.length)%gi.length;li.src=gi[gx].src;li.alt=gi[gx].alt}
+function open(i){lastF=document.activeElement;show(i);lb.hidden=false;requestAnimationFrame(()=>lb.classList.add('open'));document.body.style.overflow='hidden';$('.x',lb).focus()}
+function close(){lb.classList.remove('open');setTimeout(()=>lb.hidden=true,300);document.body.style.overflow='';lastF&&lastF.focus()}
+$$('#gal button').forEach((b,i)=>b.addEventListener('click',()=>open(i)));
+$('.x',lb).onclick=close;$('.pv',lb).onclick=()=>show(gx-1);$('.nx',lb).onclick=()=>show(gx+1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(gx-1);if(e.key==='ArrowRight')show(gx+1)});
+let x0=null;lb.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)show(gx+(dx<0?1:-1));x0=null});
+})();
+</script>
+</body>
+</html>
